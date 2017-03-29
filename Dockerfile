@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:8-jdk
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
