@@ -46,4 +46,4 @@ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs && \
 	npm update -g npm && \
 	npm install -g ionic@2.2.1 cordova@6.5.0 && \
-	npm cache clean
+	npm cache --force clean
