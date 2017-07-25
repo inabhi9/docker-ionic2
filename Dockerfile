@@ -45,5 +45,5 @@ RUN sdkmanager "build-tools;25.0.2"
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs && \
 	npm update -g npm && \
-	npm install -g ionic@2.2.1 cordova@5.4.1 && \
+	npm install -g ionic@2.2.1 cordova@6.5.0 && \
 	npm cache clean
