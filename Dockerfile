@@ -14,7 +14,7 @@ RUN cd /opt \
     && unzip -q android-sdk-tools.zip -d ${ANDROID_HOME} \
     && rm -f android-sdk-tools.zip
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/25.0.2
 
 
 # ------------------------------------------------------
