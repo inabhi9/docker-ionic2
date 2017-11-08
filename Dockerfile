@@ -16,7 +16,6 @@ RUN cd /opt \
 
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/25.0.2
 
-
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
 
@@ -30,6 +29,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 # Non-standard components: MIPS system images, preview versions, GDK (Google Glass) and Android Google TV require separate licenses, not accepted there
 RUN mkdir -p ${ANDROID_HOME}/licenses
 RUN echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
+RUN yes | sdkmanager --update && yes | sdkmanager --licenses 
 
 # Platform tools
 RUN sdkmanager "platform-tools"
