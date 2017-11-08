@@ -16,6 +16,9 @@ RUN cd /opt \
 
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/25.0.2
 
+# Due to new agreement
+RUN echo 'y' | android update sdk --no-ui --all --filter "extra-android-m2repository"
+
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
 
@@ -40,9 +43,6 @@ RUN sdkmanager "platforms;android-25"
 # build tools
 # Please keep these in descending order!
 RUN sdkmanager "build-tools;25.0.2"
-
-# Due to new agreement
-RUN echo 'y' | android update sdk --no-ui --all --filter "extra-android-m2repository"
 
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs && \
