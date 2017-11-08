@@ -34,18 +34,18 @@ RUN mkdir -p ${ANDROID_HOME}/licenses
 RUN echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
 
 # Platform tools
-RUN sdkmanager "platform-tools"
+RUN echo 'y' | sdkmanager "platform-tools"
 
 # SDKs
 # Please keep these in descending order!
-RUN sdkmanager "platforms;android-25"
+RUN echo 'y' | sdkmanager "platforms;android-25"
 
 # build tools
 # Please keep these in descending order!
-RUN sdkmanager "build-tools;25.0.2"
+RUN echo 'y' | sdkmanager "build-tools;25.0.2"
 
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs && \
-	npm update -g npm && \
-	npm install -g ionic@2.2.1 cordova@6.5.0 && \
-	npm cache --force clean
+    npm update -g npm && \
+    npm install -g ionic@2.2.1 cordova@6.5.0 && \
+    npm cache --force clean
