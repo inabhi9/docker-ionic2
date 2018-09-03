@@ -1,6 +1,7 @@
 FROM openjdk:8-jdk
 
 ENV ANDROID_HOME /opt/android-sdk-linux
+ENV GRADLE_PATH /opt/gradle-4.10
 
 RUN dpkg --add-architecture i386 && \
     apt-get update -y && \
@@ -14,7 +15,12 @@ RUN cd /opt \
     && unzip -q android-sdk-tools.zip -d ${ANDROID_HOME} \
     && rm -f android-sdk-tools.zip
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/25.0.2
+RUN cd /opt \
+    && wget -q https://downloads.gradle.org/distributions/gradle-4.10-bin.zip -O gradle.zip \
+    && unzip -q gradle.zip \
+    && rm -f gradle.zip
+
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/25.0.2:${GRADLE_PATH}/bin
 
 # Due to new agreement
 RUN echo 'y' | android update sdk --no-ui --all --filter "extra-android-m2repository"
@@ -38,14 +44,14 @@ RUN echo 'y' | sdkmanager "platform-tools"
 
 # SDKs
 # Please keep these in descending order!
-RUN echo 'y' | sdkmanager "platforms;android-25"
+RUN echo 'y' | sdkmanager "platforms;android-26"
 
 # build tools
 # Please keep these in descending order!
 RUN echo 'y' | sdkmanager "build-tools;25.0.2"
 
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs && \
     npm update -g npm && \
-    npm install -g ionic@2.2.1 cordova@6.5.0 && \
+    npm install -g ionic@4 cordova@8 && \
     npm cache --force clean
