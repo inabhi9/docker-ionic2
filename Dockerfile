@@ -31,7 +31,7 @@ RUN echo 'y' | android update sdk --no-ui --all --filter "extra-android-m2reposi
 # License is valid for all the standard components in versions installed from this file
 # Non-standard components: MIPS system images, preview versions, GDK (Google Glass) and Android Google TV require separate licenses, not accepted there
 RUN mkdir -p ${ANDROID_HOME}/licenses
-RUN echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
+RUN echo -e "8933bad161af4178b1185d1a37fbf41ea5269c55\n\nd56f5187479451eabf01fb78af6dfcb131a6481e\n\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > ${ANDROID_HOME}/licenses/android-sdk-license
 
 # Platform tools
 RUN echo 'y' | sdkmanager "platform-tools"
