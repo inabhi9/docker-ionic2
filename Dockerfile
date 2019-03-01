@@ -44,7 +44,7 @@ RUN echo 'y' | sdkmanager "platforms;android-25"
 # Please keep these in descending order!
 RUN echo 'y' | sdkmanager "build-tools;25.0.2"
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs && \
     npm update -g npm && \
     npm install -g ionic@2.2.1 cordova@6.5.0 && \
