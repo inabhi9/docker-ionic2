@@ -5,7 +5,7 @@ ENV GRADLE_PATH /opt/gradle-4.10
 
 RUN dpkg --add-architecture i386 && \
     apt-get update -y && \
-    apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 && \
+    apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 build-essential && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get autoremove -y && \
     apt-get clean
